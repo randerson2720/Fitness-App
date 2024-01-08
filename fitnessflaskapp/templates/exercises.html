@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block body %}
+<h1>Exercises</h1>
+<a href="/" class="btn btn-dark">Home</a>
+<a href="/exercise" class="btn btn-dark">Add a new exercise</a> <br>
+{% if exercises|length < 1 %} <p>There are no exercises.</p>
+    {% else %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Exercise ID</th>
+                <th>Exercise Name</th>
+                <th>Exercise Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for exercise in exercises %}
+            <tr>
+                <td>{{ exercise.ExerciseID }}</td>
+                <td>{{ exercise.ExerciseName }}</td>
+                <td>{{ exercise.ExerciseType }}</td>
+                <td>{{ exercise.Description }}</td>
+                <td>
+                    <a href="exercise/{{exercise.ExerciseID}}" class="btn btn-info">Update</a>&nbsp;
+                    <a href="exercise/delete/{{exercise.ExerciseID}}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+    {% endblock %}

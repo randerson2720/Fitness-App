@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block body %}
+<h1>Workout Details</h1>
+<a href="/" class="btn btn-dark">Home</a>
+<a href="/workoutdetail" class="btn btn-dark">Add a new workout detail</a> <br>
+{% if workoutdetails|length < 1 %} <p>There are no workout details.</p>
+    {% else %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Workout ID</th>
+                <th>Workout Name</th>
+                <th>Workout Type</th>
+                <th>Detail ID</th>
+                <th>Exercise Name</th>
+                <th>Sets</th>
+                <th>Reps</th>
+                <th>Weight</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for detail in workoutdetails %}
+            <tr>
+                <td>{{ detail.WorkoutID }}</td>
+                <td>{{ detail.WorkoutName }}</td>
+                <td>{{ detail.WorkoutType }}</td>
+                <td>{{ detail.WorkoutDetailID or 'N/A' }}</td>
+                <td>{{ detail.ExerciseName or 'N/A' }}</td>
+                <td>{{ detail.Sets or 'N/A' }}</td>
+                <td>{{ detail.Reps or 'N/A' }}</td>
+                <td>{{ detail.Weight or 'N/A' }}</td>
+                <td>
+                    <a href="workoutdetail/{{detail.WorkoutDetailID}}" class="btn btn-info">Update</a>&nbsp;
+                    <a href="workoutdetail/delete/{{detail.WorkoutDetailID}}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+    {% endblock %}

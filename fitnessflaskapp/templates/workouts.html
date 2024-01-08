@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block body %}
+<h1>Workouts</h1>
+<a href="/" class="btn btn-dark">Home</a>
+<a href="/workout" class="btn btn-dark">Add a new workout</a> <br>
+{% if workouts|length < 1 %} <p>There are no workouts.</p>
+    {% else %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>User Name</th>
+                <th>Workout ID</th>
+                <th>Workout Name</th>
+                <th>Workout Type</th>
+                <th>Date Created</th>
+                <th>Last Update</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for workout in workouts %}
+            <tr>
+                <td>{{ workout.UserID }}</td>
+                <td>{{ workout.UserFirstName }} {{ workout.UserLastName }}</td>
+                <td>{{ workout.WorkoutID or 'N/A' }}</td>
+                <td>{{ workout.WorkoutName or 'N/A' }}</td>
+                <td>{{ workout.WorkoutType or 'N/A' }}</td>
+                <td>{{ workout.DateCreated or 'N/A' }}</td>
+                <td>{{ workout.LastUpdate or 'N/A' }}</td>
+                <td>
+                    <a href="workout/{{workout.WorkoutID}}" class="btn btn-info">Update</a>&nbsp;
+                    <a href="workout/delete/{{workout.WorkoutID}}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+    {% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block body %}
+<h1>Users</h1>
+<a href="/" class="btn btn-dark">Home</a>
+<a href="/user" class="btn btn-dark">Add a new user</a> <br>
+{% if users|length < 1 %} <p>There are no users.</p>
+    {% else %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Experience Level</th>
+                <th>Goals</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.UserID }}</td>
+                <td>{{ user.UserFirstName }}</td>
+                <td>{{ user.UserLastName }}</td>
+                <td>{{ user.ExperienceLevel }}</td>
+                <td>{{ user.Goals }}</td>
+                 <td>
+                    <a href="user/{{user.UserID}}" class="btn btn-info">Update</a>&nbsp;
+                    <a href="user/delete/{{user.UserID}}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+    {% endblock %}

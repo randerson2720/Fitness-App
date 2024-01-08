@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block body %}
+<h1 class="mb-4">Add/Update User</h1>
+<form id="updateUser" action="{{form_action}}" method="post">
+    <div class="mb-3">
+        <label for="userFirstName" class="form-lable">User First Name: </label>
+        <input type="text" class="form_control" name="userFirstName" value="{{user['UserFirstName']}}" required>
+    </div>
+    <div class="mb-3">
+        <label for="userLastName" class="form-lable">User Last Name: </label>
+        <input type="text" class="form_control" name="userLastName" value="{{user['UserLastName']}}" required>
+    </div>
+    <div class="mb-3">
+        <label for="userExperienceLevel" class="form-lable">User Experience Level: </label>
+        <input type="text" class="form_control" name="userExperienceLevel" value="{{user['ExperienceLevel']}}" required>
+    </div>
+    <div class="mb-3">
+        <label for="userGoal" class="form-lable">User Goal: </label>
+        <input type="text" class="form_control" name="userGoal" value="{{user['Goals']}}" required>
+    </div>
+    <button type="submit" class="btn btn-info" id="submitButton">Submit</button>
+</form>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block body %}
+<h1 class="mb-4">Add/Update Workout Details</h1>
+<form id="updateWorkoutDetail" action="{{form_action}}" method="post">
+    <div class="mb-3">
+        <label for="workoutID" class="form-lable">Workout ID: </label>
+        <input type="text" class="form_control" name="workoutID" value="{{workoutdetail['WorkoutID']}}" required>
+    </div>
+    <div class="mb-3">
+        <label for="exerciseID" class="form-lable">Exercise ID: </label>
+        <input type="text" class="form_control" name="exerciseID" value="{{workoutdetail['ExerciseID']}}" required>
+    </div>
+    <div class="mb-3">
+        <label for="sets" class="form-lable">Sets: </label>
+        <input type="text" class="form_control" name="sets" value="{{workoutdetail['Sets']}}" required>
+    </div>
+    <div class="mb-3">
+        <label for="reps" class="form-lable">Reps: </label>
+        <input type="text" class="form_control" name="reps" value="{{workoutdetail['Reps']}}" required>
+    </div>
+    <div class="mb-3">
+        <label for="weight" class="form-lable">Weight: </label>
+        <input type="text" class="form_control" name="weight" value="{{workoutdetail['Weight']}}" required>
+    </div>
+
+    <button type="submit" class="btn btn-info" id="submitButton">Submit</button>
+</form>
+{% endblock %}
